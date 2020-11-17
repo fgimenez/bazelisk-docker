@@ -3,23 +3,23 @@ version: 2
 jobs:
   buildImage:
     docker:
-      - image: docker:19.03
+      - image: ischyon/ci-commons:v1.2.2
     steps:
       - checkout
       - setup_remote_docker
       - run:
           command: |
-            ./scripts/build-image.sh fgimenez/bazelisk .
+            /scripts/build-image.sh fgimenez/bazelisk .
 
   publishImage:
     docker:
-      - image: docker:19.03
+      - image: ischyon/ci-commons:v1.2.2
     steps:
       - checkout
       - setup_remote_docker
       - run:
           command: |
-            ./scripts/publish-image.sh fgimenez/bazelisk
+            /scripts/publish-image.sh fgimenez/bazelisk
 
 workflows:
   version: 2
